@@ -18,3 +18,7 @@ La politique de confinement, qu'il s'agisse d'un confinement total ou partiel, a
     <li>  La possibilité pour le centre de santé de se connecter au gateway et de récupérer les mesures prélevées sur le patient. </li>
 </ul>
   
+## Architecture globale de la plateforme
+
+notre projet est constitué de 2 environnements: un environnement du patient et un environnement hospitalier (ou prestataire de santé en général).
+
