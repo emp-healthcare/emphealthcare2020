@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Accueil</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- IonIcons -->
+<link rel="stylesheet" href="../../dist/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+<link rel="stylesheet" href="../../dist/css/perso.css">
+<style>
+#add, #add2 {
+	color: white !important;
+}
+</style>
+</head>
+<body class="hold-transition sidebar-mini ">
+	<div class="wrapper">
+		<div th:replace="fragments/navbar"></div>
+		<div th:replace="fragments/sidebar"></div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark"><i class="fas fa-home nav-icon"></i> Accueil</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item active">Accueil</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="card row ">
+						<div class="card-body row col-md-12">
+							<div class="row col-md-12">
+								<div class="col-md-3 offset-1">
+									<div class="card mt-1  card-outline bg-success ">
+										<div class="card-body text-center">
+											<p class="mb-4">
+												<img class=" img-fluid "
+													th:src="@{../../dist/img/doctor2.png}" alt="card image">
+											</p>
+											<h2 class="text-center text-dark bg-white pt-3 pb-3"
+												style="border-radius: 5px 30px 5px">Patients</h2>
+										</div>
+										<div class="card-footer bg-light text-center">
+											<a th:href="@{/patients}" class="small-box-footer text-dark">Voir
+												la liste <i class="fas fa-arrow-circle-right"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 ">
+									<!-- Profile Image -->
+									<div class="card card-success card-outline ">
+										<div class="card-body box-profile">
+											<div class="text-center" th:if="${userPhoto == null}">
+												<img src="../../dist/img/userspp/user_128px.png"
+													class="img-circle elevation-1" alt="User Image">
+											</div>
+
+											<h3 class="profile-username text-center"
+												th:text="${userVrai.nom + ' ' + userVrai.prenom}"></h3>
+
+											<p class="text-muted text-center"
+												th:text="${praticien.metier.metier}"></p>
+
+											<ul class="list-group list-group-unbordered mb-3">
+												<li class="list-group-item"><b>Email</b> <a
+													class="float-right" th:text="${userVrai.username}"></a></li>
+												<li class="list-group-item"><b>Téléphone</b> <a
+													class="float-right" th:text="${userVrai.numeroTelephone}">543</a>
+												</li>
+												<li class="list-group-item"><b>Adresse</b> <a
+													class="float-right"
+													th:text="${userVrai.adresse.adresse + ', ' +userVrai.adresse.ville}">13,287</a>
+												</li>
+											</ul>
+
+											<a th:href="@{/profil}" class="btn btn-success btn-block"><b>Profil
+													complet</b></a>
+										</div>
+										<!-- /.card-body -->
+									</div>
+									<!-- /.card -->
+								</div>
+
+								<div class="col-md-3 ">
+									<div class="card ">
+										<div class="card-body text-center">
+											<p class="mb-4">
+												<img class=" img-fluid "
+													th:src="@{../../dist/img/calendar.png}" alt="card image">
+											</p>
+											<h2 class="text-center text-white bg-success pt-3 pb-3"
+												style="border-radius: 5px 30px 5px">Rendez-vous</h2>
+										</div>
+										<div class="card-footer bg-success text-center">
+											<a th:href="@{/rendezvous}"
+												class="small-box-footer text-dark">Voir la liste <i
+												class="fas fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row col-md-12">
+
+								<div class="col-md-3  ">
+									<div class="card ">
+										<div class="card-body text-center">
+											<p class="mb-4">
+												<img class=" img-fluid " th:src="@{../../dist/img/chat.png}"
+													alt="card image">
+											</p>
+											<h3 class="text-center text-white bg-danger pt-2 pb-2"
+												style="border-radius: 5px 30px 5px">Messages</h3>
+										</div>
+										<div class="card-footer bg-danger text-center">
+											<a th:href="@{/inbox}" class="small-box-footer text-dark">Voir
+												la liste <i class="fas fa-arrow-circle-right"></i>
+											</a>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-md-3 ">
+									<div class="card ">
+										<div class="card-body text-center">
+											<p class="mb-4">
+												<img class=" img-fluid " th:src="@{../../dist/img/add.png}"
+													alt="card image">
+											</p>
+											<h3 id="add"
+												class="text-center text-white bg-orange pt-2 pb-2"
+												style="border-radius: 5px 30px 5px">Nouveau
+												patient</h3>
+										</div>
+										<div class="card-footer bg-orange text-center">
+											<a id="add2" th:href="@{/ajout}"
+												class="small-box-footer text-white">Recherche et ajout <i
+												class="fas fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="card ">
+										<div class="card-body text-center">
+											<p class="mb-4">
+												<img class=" img-fluid " th:src="@{../../dist/img/film.png}"
+													alt="card image">
+											</p>
+											<h3 class="text-center text-white bg-dark pt-2 pb-2"
+												style="border-radius: 5px 30px 5px">Téléconsultation</h3>
+										</div>
+										<div class="card-footer bg-dark text-center">
+											<a th:href="@{/teleconsultation}"
+												class="small-box-footer text-white">Accéder <i
+												class="fas fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 ">
+									<div class="card ">
+										<div class="card-body text-center">
+											<p class="mb-4">
+												<img class=" img-fluid "
+													th:src="@{../../dist/img/group.png}" alt="card image">
+											</p>
+											<h3 class="text-center text-white bg-primary pt-2 pb-2"
+												style="border-radius: 5px 30px 5px">Collègues</h3>
+										</div>
+										<div class="card-footer bg-primary text-center">
+											<a th:href="@{/stats}" class="small-box-footer text-dark">Voir
+												la liste <i class="fas fa-arrow-circle-right"></i>
+											</a>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+						<!--  <div class="col-md-3">-->
+						<!-- small box -->
+						<!--<div class="small-box bg-warning">
+              <div class="inner">
+                <h3 th:text="${nombrePatient}"></h3>
+
+                <p>Patients</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-medkit"></i>
+              </div>
+              <a th:href="@{/patients}" class="small-box-footer">Voir la liste <i class="fas fa-arrow-circle-right"></i></a>
+            </div>-->
+						<!--</div>-->
+
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<strong>Copyright &copy; 2019-2020 <a
+				href="http://www.emp.mdn.dz/">Ecole Militaire Polytechnique -
+					Chahid Abderrahmane Taleb</a>.
+			</strong> Tous droits réservés.
+			<div class="float-right d-none d-sm-inline-block">
+				<b>Version</b> 1.0.0-pre
+			</div>
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="dist/js/adminlte.js"></script>
+
+	<!-- DataTables -->
+	<script src="../../plugins/datatables/jquery.dataTables.js"></script>
+	<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				"language" : {
+					"lengthMenu" : "Nombre d'entrées _MENU_",
+					"search" : "Recherche",
+					"info" : "Affichage de _START_ à _END_ de _TOTAL_ entrées",
+					"infoEmpty" : "Affichage de 0 à 0 à 0 entrées",
+					"paginate": {
+				        "first":      "Début",
+				        "last":       "Fin",
+				        "next":       "Suivant",
+				        "previous":   "Précédent"
+				    },
+				    "zeroRecords":    "Aucun résultat trouvé",
+				    "emptyTable":     "Cette table ne contient aucune entrée",
+				},
+				responsive: true,
+				"lengthChange": false
+			});
+		});
+		
+	</script>
+</body>
+</html>

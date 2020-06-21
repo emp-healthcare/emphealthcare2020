@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5"
+	lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Capteurs</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	th:href="@{../../plugins/fontawesome-free/css/all.min.css}">
+<!-- IonIcons -->
+<link rel="stylesheet" th:href="@{../../dist/css/ionicons.min.css}">
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{../../dist/css/adminlte.min.css}">
+
+<link rel="stylesheet" th:href="@{../../dist/css/perso.css}">
+
+</head>
+<body>
+
+
+	<div class="wrapper">
+
+		<div class="container-fluid">
+			<div class="card mt-5">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div th:if="${capteur.mesure.type.equals('TEMPERATURE')}">
+								<canvas id="areaChart"
+									style="min-height: 250px; height: 350px; max-height: 350px; max-width: 100%;"></canvas>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="footer offset-6">
+					<form action="#" id="form" th:action="@{/Refresh}"
+						th:object="${capteur}" method="post" style="width: 75%">
+						<input class="form-control" type="hidden" th:field="*{IDCapteur}" />
+						<button type="submit" class="btn  btn-outline-dark mb-3"
+							id="chargement">
+							<i class="fas fa-sync "></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- ./wrapper -->
+
+
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script th:src="@{../../plugins/jquery/jquery.min.js}"></script>
+
+	<!-- Bootstrap -->
+	<script th:src="@{../../plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- AdminLTE -->
+	<script th:src="@{../../dist/js/adminlte.js}"></script>
+	<!-- FLOT CHARTS -->
+	<script th:src="@{../../plugins/flot/jquery.flot.js}"></script>
+	<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+	<script th:src="@{../../plugins/flot-old/jquery.flot.resize.min.js}"></script>
+	<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+	<script th:src="@{../../plugins/flot-old/jquery.flot.pie.min.js}"></script>
+	<!-- DataTables -->
+	<script th:src="@{../../plugins/datatables/jquery.dataTables.js}"></script>
+	<script
+		th:src="@{../../plugins/datatables-bs4/js/dataTables.bootstrap4.js}"></script>
+
+	<script th:src="@{../../dist/js/Chart.bundle.js}"></script>
+	<script type="text/javascript" th:inline="javascript">
+  window.onload = function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    //var areaChartCanvas = document.getElementById('#areaChart').getContext('2d');
+    	var x = /*[[${x}]]*/ 'd';
+    var y = /*[[${y}]]*/ 'a';
+    var unite = /*[[${unite}]]*/;
+var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+    var areaChartData = {
+      labels  : x,
+      datasets: [
+        {
+        	backgroundColor: "#ffffff",
+			borderColor: "#dc3545",
+			label: 'Température ',
+          	data : y,
+          	pointRadius: 5
+        }
+      ]
+    }
+
+    var areaChartOptions = {
+			maintainAspectRatio: false,
+			spanGaps: false,
+			elements: {
+				line: {
+					tension: 0.000001
+				}
+			},
+			plugins: {
+				filler: {
+					propagate: false
+				}
+			},
+			scales: {
+				xAxes: [{
+					type: 'time',
+					time: {
+				        unit: 'hour',
+				        unitStepSize: 5,
+				        displayFormats: {
+				        	'hour': 'MMM DD, hA'
+				        }}
+				}],
+				yAxes: [{
+				      scaleLabel: {
+				        display: true,
+				        labelString: unite
+				      }
+				    }]
+			},
+			
+		
+		};
+
+    // This will get the first returned node in the jQuery collection.
+    var areaChart       = new Chart(areaChartCanvas, { 
+      type: 'line',
+      data: areaChartData, 
+      options: areaChartOptions
+    })
+  }
+  </script>
+	<!--	<script type="text/javascript" th:inline="javascript">
+	$(document).ready(function() {
+    var sin = []
+    var x = /*[[${x}]]*/ 'd';
+    var y = /*[[${y}]]*/ 'a';
+    var unite = /*[[${unite}]]*/;
+    function gd(i) {
+	    return y[i];
+	}
+    for (var i = 0; i <  /*[[${x.size()}]]*/ 10 ; i ++) {
+      sin.push([x[i], gd(i)])
+    }
+    var line_data1 = {
+      data : sin,
+      color: '#d64541'
+    }
+    $.plot('#line-chart', [line_data1], {
+      grid  : {
+        hoverable  : true,
+        borderColor: '#f3f3f3',
+        borderWidth: 1,
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+        shadowSize: 0,
+        lines     : {
+          show: true,
+          fill : false,
+          color: ['#28a745']
+        },
+        points    : {
+          show: true
+        }
+      },
+      yaxis : {
+        show: true,
+        axisLabel: unite
+      },
+      xaxis : {
+        show: true,
+        mode: "time",
+        timeformat: "%d %b %y à %h H %M min"
+      }
+      
+    })
+
+    
+    $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
+      position: 'absolute',
+      display : 'none',
+      opacity : 0.8
+    }).appendTo('body')
+    $('#line-chart').bind('plothover', function (event, pos, item) {
+      if (item) {
+        var x = item.datapoint[0].toFixed(2),
+            y = item.datapoint[1].toFixed(2)
+
+        $('#line-chart-tooltip').html(y + ' ' + unite)
+          .css({
+            top : item.pageY + 5,
+            left: item.pageX + 5
+          })
+          .fadeIn(200)
+      } else {
+        $('#line-chart-tooltip').hide()
+      }
+
+    })
+})
+	</script>-->
+</body>
+</html>

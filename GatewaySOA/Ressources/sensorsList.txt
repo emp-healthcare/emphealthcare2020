@@ -1,0 +1,2 @@
+capteur.ecg.2@emp.dz
+capteur.temperature.2@emp.dz

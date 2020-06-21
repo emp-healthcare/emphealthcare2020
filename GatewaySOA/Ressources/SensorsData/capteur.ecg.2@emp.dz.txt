@@ -1,0 +1,6 @@
+ECG
+2
+Electrocardiography
+Bluetooth
+btspp://FCA89A001BBF:1;authenticate=false;encrypt=false;master=false
+capteur.ecg.2@emp.dz

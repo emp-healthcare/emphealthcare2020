@@ -1,0 +1,9 @@
+Arterial Pressure : 8
+Glycimie : 2
+Heart Rate : 12
+IMC : 2
+Temperarture : 38
+Breathing Frequency : 3
+Height : 75
+Weight : 175
+Comment : RAS

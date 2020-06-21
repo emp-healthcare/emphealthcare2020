@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5"
+	lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Message</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	th:href="@{../../plugins/fontawesome-free/css/all.min.css}">
+<!-- IonIcons -->
+<link rel="stylesheet" th:href="@{../../dist/css/ionicons.min.css}">
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{../../dist/css/adminlte.min.css}">
+
+<link rel="stylesheet" th:href="@{../../dist/css/perso.css}">
+
+</head>
+<body>
+
+
+	<div class="wrapper">
+
+		<div class="container-fluid">
+			<div class="card mt-5">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<form class="form-horizontal" th:object="${prescription}">
+														<div class="form-group row">
+															<label for="inputName" class="col-sm-3 col-form-label">Date</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputName"
+																	th:field="*{date}" required readonly="readonly">
+															</div>
+														</div>
+														<div  class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Traitement</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:value="*{traitement}" required readonly="readonly">
+															</div>
+														</div>
+														
+														<div th:if="*{!med1.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Médicament 1</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{med1}" required readonly="readonly">
+															</div>
+														</div>
+
+														<div th:if="*{!pos1.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Posologie</label>
+															<div class="col-sm-9">
+																<textarea rows="6" class="form-control" id="inputPrenom"
+																	th:field="*{pos1}" required readonly="readonly"></textarea>
+															</div>
+														</div>
+														
+														<div th:if="*{!med2.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Médicament 2</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{med2}" required readonly="readonly">
+															</div>
+														</div>
+
+														<div th:if="*{!pos2.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Posologie</label>
+															<div class="col-sm-9">
+																<textarea rows="6" class="form-control" id="inputPrenom"
+																	th:field="*{pos2}" required readonly="readonly"></textarea>
+															</div>
+														</div>
+														
+														<div th:if="*{!med3.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Médicament 3</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{med3}" required readonly="readonly">
+															</div>
+														</div>
+
+														<div th:if="*{!pos3.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Posologie</label>
+															<div class="col-sm-9">
+																<textarea rows="6" class="form-control" id="inputPrenom"
+																	th:field="*{pos3}" required readonly="readonly"></textarea>
+															</div>
+														</div>
+														
+														<div th:if="*{!med4.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Médicament 4</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{med4}" required readonly="readonly">
+															</div>
+														</div>
+
+														<div th:if="*{!pos4.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Posologie</label>
+															<div class="col-sm-9">
+																<textarea rows="6" class="form-control" id="inputPrenom"
+																	th:field="*{pos4}" required readonly="readonly"></textarea>
+															</div>
+														</div>
+														
+														<div th:if="*{!med5.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Médicament 5</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{med5}" required readonly="readonly">
+															</div>
+														</div>
+
+														<div th:if="*{!pos5.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Posologie</label>
+															<div class="col-sm-9">
+																<textarea rows="6" class="form-control" id="inputPrenom"
+																	th:field="*{pos5}" required readonly="readonly"></textarea>
+															</div>
+														</div>
+														
+														
+
+													</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- ./wrapper -->
+
+
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script th:src="@{../../plugins/jquery/jquery.min.js}"></script>
+
+	<!-- Bootstrap -->
+	<script th:src="@{../../plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- AdminLTE -->
+	<script th:src="@{../../dist/js/adminlte.js}"></script>
+	<!-- FLOT CHARTS -->
+	<script th:src="@{../../plugins/flot/jquery.flot.js}"></script>
+	<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+	<script th:src="@{../../plugins/flot-old/jquery.flot.resize.min.js}"></script>
+	<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+	<script th:src="@{../../plugins/flot-old/jquery.flot.pie.min.js}"></script>
+	<!-- DataTables -->
+	<script th:src="@{../../plugins/datatables/jquery.dataTables.js}"></script>
+	<script
+		th:src="@{../../plugins/datatables-bs4/js/dataTables.bootstrap4.js}"></script>
+
+	
+</body>
+</html>

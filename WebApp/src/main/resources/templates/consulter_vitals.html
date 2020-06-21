@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5"
+	lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Signes vitaux</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	th:href="@{../../plugins/fontawesome-free/css/all.min.css}">
+<!-- IonIcons -->
+<link rel="stylesheet" th:href="@{../../dist/css/ionicons.min.css}">
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{../../dist/css/adminlte.min.css}">
+
+<link rel="stylesheet" th:href="@{../../dist/css/perso.css}">
+
+</head>
+<body>
+
+
+	<div class="wrapper">
+
+		<div class="container-fluid">
+			<div class="card mt-5">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<form class="form-horizontal" th:object="${vitals}">
+														<div class="form-group row">
+															<label for="inputName" class="col-sm-3 col-form-label">Date</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputName"
+																	th:field="*{date}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{praticien!=null}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Origine</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{nomInfirmier}" required readonly="readonly">
+															</div>
+														</div>
+														
+														<div th:if="*{praticien==null}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Origine</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	value="Domicile" required readonly="readonly">
+															</div>
+														</div>
+
+														<div th:if="*{!poids.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Poids</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{poids}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!taille.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Taille</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{taille}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!temperature.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Temperature</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{temperature}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!pouls.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Pouls</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{pouls}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!respiration.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Respiration</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{respiration}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!imc.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">IMC</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{imc}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!tourDeTaille.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Tour de taille</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{tourDeTaille}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!tourDeTete.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">tour de tête</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{tourDeTete}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!tension.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Tension</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{tension}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!glycemie.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Glycémie</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{glycemie}" required readonly="readonly">
+															</div>
+														</div>
+														<div th:if="*{!commentaire.equals('')}" class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Commentaire</label>
+															<div class="col-sm-9">
+																<textarea rows="5"  class="form-control" id="inputPrenom"
+																	th:field="*{commentaire}" required readonly="readonly"></textarea>
+															</div>
+														</div>
+
+
+
+													</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- ./wrapper -->
+
+
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script th:src="@{../../plugins/jquery/jquery.min.js}"></script>
+
+	<!-- Bootstrap -->
+	<script th:src="@{../../plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- AdminLTE -->
+	<script th:src="@{../../dist/js/adminlte.js}"></script>
+	<!-- FLOT CHARTS -->
+	<script th:src="@{../../plugins/flot/jquery.flot.js}"></script>
+	<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+	<script th:src="@{../../plugins/flot-old/jquery.flot.resize.min.js}"></script>
+	<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+	<script th:src="@{../../plugins/flot-old/jquery.flot.pie.min.js}"></script>
+	<!-- DataTables -->
+	<script th:src="@{../../plugins/datatables/jquery.dataTables.js}"></script>
+	<script
+		th:src="@{../../plugins/datatables-bs4/js/dataTables.bootstrap4.js}"></script>
+
+	
+</body>
+</html>

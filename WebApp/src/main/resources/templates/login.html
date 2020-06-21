@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Connexion</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../dist/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/perso.css">
+</head>
+<body class="hold-transition login-page" style="background-image: url('../../dist/img/background.png');background-repeat:no-repeat;background-size:cover;">
+<div class="login-box ">
+  <div class="login-logo">
+  <img src="../../dist/img/logo_emp.png" alt="EMP Logo" class=" elevation-2"
+           style="width:100%">
+  </div>
+  <!-- /.login-logo -->
+  <div class="card elevation-3">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Connectez-vous pour démarrer une session</p>
+
+      <form th:action="@{/login}" method="POST">
+      <div th:if="${param.error != null}" class="alert alert-danger" style="width:100%">
+			<strong>Connexion échouée.</strong> <span th:if="${session[SPRING_SECURITY_LAST_EXCEPTION]!= null}"> <span th:text="${session[SPRING_SECURITY_LAST_EXCEPTION].message}">
+					Invalid credentials</span>
+			</span>
+		</div>
+		<div th:if="${param.logout != null}" class="alert alert-success" style="width:100%">Déconnexion réussie.</div>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email" id="username" name="username"  required/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Mot de passe" id="password"
+			name="password" required/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-7">
+            <div class="icheck-success">
+              <input type="checkbox" id="remember-me" name="remember-me">
+              <label for="remember-me">
+                Se souvenir de moi
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-5">
+            <button type="submit" class="btn btn-success btn-block">Connexion</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+
+</body>
+</html>

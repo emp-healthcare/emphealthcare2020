@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5"
+	lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Capteurs</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	th:href="@{../../plugins/fontawesome-free/css/all.min.css}">
+<!-- IonIcons -->
+<link rel="stylesheet" th:href="@{../../dist/css/ionicons.min.css}">
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{../../dist/css/adminlte.min.css}">
+
+<link rel="stylesheet" th:href="@{../../dist/css/perso.css}">
+</head>
+<body class="hold-transition sidebar-mini ">
+	<div class="wrapper">
+		<div th:replace="fragments/navbar"></div>
+
+		<!-- Sidebar -->
+		<div class="sidebar">
+
+
+
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="image" th:if="${userPhoto == null}">
+					<img src="../../dist/img/userspp/user_128px.png"
+						class="img-circle elevation-1" alt="User Image">
+				</div>
+				<div class="info">
+					<a th:href="@{/profil}" class="d-block"
+						th:text="${userVrai.prenom}"></a>
+				</div>
+			</div>
+
+
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column"
+					data-widget="treeview" role="menu" data-accordion="false">
+					<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+					<li class="nav-item"><a th:href="@{/}" class="nav-link active">
+							<i class="fas fa-home nav-icon"></i>
+							<p>Accueil</p>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/patients}"
+						class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
+							<p>Mes patients</p> <span class="badge badge-success right"
+							th:text="${nombrePatient}"></span>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/rendezvous}"
+						class="nav-link"> <i class="nav-icon fas fa-calendar"></i>
+							<p>Mes rendez-vous</p> <span class="badge badge-warning right"
+							th:text="${demandesDeRendezvous}"></span>
+					</a></li>
+
+					<li class="nav-item">
+                <a th:href="@{/inbox}"  class="nav-link ">
+                  <i class="nav-icon far fa-envelope"></i>
+                  <p>Boîte de réception</p>
+                  <span class="badge badge-danger right">0</span>
+                </a>
+              </li>
+           
+					<li class="nav-item"><a th:href="@{/teleconsultation}"
+						class="nav-link "> <i class="nav-icon fas fa-video"></i>
+							<p>Téléconsultation</p>
+					</a></li>
+					<li class="nav-item"><a th:href="@{/ajout}" class="nav-link">
+							<i class="nav-icon fas fa-user-plus"></i>
+							<p>Ajouter un patient</p>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/stats}" class="nav-link">
+							<i class="nav-icon fas fa-users"></i>
+							<p>Mes collègues </p>
+					</a></li>
+
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
+		</aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Capteurs demandés</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a th:href="@{/}">Accueil</a></li>
+								<li class="breadcrumb-item"><a th:href="@{/patients}">Capteurs</a></li>
+								<li class="breadcrumb-item active">Liste</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-body">
+									<table id="example"
+										class="table table-striped table-bordered display nowrap">
+										<thead>
+											<tr>
+												<th class="text-center">ID</th>
+												<th class="text-center">Patient</th>
+												<th class="text-center">Type</th>
+												<th class="text-center">Nom</th>
+
+												<th class="text-center">Fabricant</th>
+
+												<th class="text-center">Consulter</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="c : ${capteurs}">
+												<td th:text="${c.IDCapteur}" class="text-center">Patient
+													ID</td>
+												<td
+													th:text="${patientsPersonne.get(c).nom + ' ' + patientsPersonne.get(c).prenom }"
+													class="text-center">Nom(s)</td>
+												<td th:text="${c.mesure.type}" class="text-center">Sexe</td>
+												<td th:text="${c.nom}" class="text-center">Patient ID</td>
+
+												<td th:text="${c.fabricant}" class="text-center">Sexe</td>
+												<td class="project-actions text-center"><a
+													class="btn btn-success btn-sm"
+													th:href="@{/capteurs/{capteurId} (capteurId=${c.IDCapteur})}">
+														<i class="fas fa-search"> </i>
+												</a></td>
+											</tr>
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<strong>Copyright &copy; 2019-2020 <a
+				href="http://www.emp.mdn.dz/">Ecole Militaire Polytechnique -
+					Chahid Abderrahmane Taleb</a>.
+			</strong> Tous droits réservés.
+			<div class="float-right d-none d-sm-inline-block">
+				<b>Version</b> 1.0.0-pre
+			</div>
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script th:src="@{../../plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{../../plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- AdminLTE -->
+	<script th:src="@{../../dist/js/adminlte.js}"></script>
+
+	<!-- DataTables -->
+	<script th:src="@{../../plugins/datatables/jquery.dataTables.js}"></script>
+	<script
+		th:src="@{../../plugins/datatables-bs4/js/dataTables.bootstrap4.js}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				"language" : {
+					"lengthMenu" : "Nombre d'entrées _MENU_",
+					"search" : "Recherche",
+					"info" : "Affichage de _START_ à _END_ de _TOTAL_ entrées",
+					"infoEmpty" : "Affichage de 0 à 0 à 0 entrées",
+					"paginate" : {
+						"first" : "Début",
+						"last" : "Fin",
+						"next" : "Suivant",
+						"previous" : "Précédent"
+					},
+					"zeroRecords" : "Aucun résultat trouvé",
+					"emptyTable" : "Cette table ne contient aucune entrée",
+				},
+				responsive : true,
+				"lengthChange": false,
+				"info": false
+			});
+		});
+	</script>
+
+</body>
+</html>

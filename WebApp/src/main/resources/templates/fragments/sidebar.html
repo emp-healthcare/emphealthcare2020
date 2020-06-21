@@ -1,0 +1,79 @@
+<!-- Sidebar -->
+    <div class="sidebar">
+    
+   
+    
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image" th:if="${userPhoto == null}">
+          <img src="../../dist/img/userspp/user_128px.png" class="img-circle elevation-1" alt="User Image">
+        </div>
+        <div class="info">
+          <a th:href="@{/profil}" class="d-block" th:text="${userVrai.prenom}"></a>
+        </div>
+      </div>
+
+		
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+                <a th:href="@{/}"  class="nav-link active">
+                  <i class="fas fa-home nav-icon"></i>
+                  <p>Accueil</p>
+                </a>
+           </li>
+           
+           <li class="nav-item">
+                <a th:href="@{/patients}"  class="nav-link">
+                  <i class="nav-icon fas fa-user-md"></i>
+                  <p>Mes patients</p>
+                  <span class="badge badge-success right" th:text="${nombrePatient}"></span>
+                </a>
+           </li>
+           
+           <li class="nav-item">
+                <a th:href="@{/rendezvous}"  class="nav-link">
+                  <i class="nav-icon fas fa-calendar"></i>
+                  <p>Mes rendez-vous</p>
+                  <span class="badge badge-warning right" th:text="${demandesDeRendezvous}"></span>
+                </a>
+           </li>
+           
+           <li class="nav-item">
+                <a th:href="@{/inbox}"  class="nav-link ">
+                  <i class="nav-icon far fa-envelope"></i>
+                  <p>Boîte de réception</p>
+                  <span class="badge badge-danger right">0</span>
+                </a>
+              </li>
+           
+           
+          <li class="nav-item">
+                <a th:href="@{/teleconsultation}"  class="nav-link ">
+                  <i class="nav-icon fas fa-video"></i>
+                  <p>Téléconsultation</p>
+                </a>
+           </li>
+          <li class="nav-item">
+                <a th:href="@{/ajout}"  class="nav-link">
+                  <i class="nav-icon fas fa-user-plus"></i>
+                  <p>Ajouter un patient</p>
+                </a>
+           </li>
+           
+           <li class="nav-item">
+                <a th:href="@{/stats}"  class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  Mes collègues 
+                </a>
+           </li>
+           
+		</ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

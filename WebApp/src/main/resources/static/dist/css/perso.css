@@ -1,0 +1,89 @@
+a {
+  color: #02B875;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover{
+  color: green;
+  text-decoration: none;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+	background-color:#02B875;
+	border-color:  #02B875;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+	background-color: #02B875;
+}
+
+#l2:hover{
+	color: green !important;
+}
+
+#l1:hover{
+	color: green !important;
+}
+
+#example_filter > label{
+	display: block;
+}
+
+#example_paginate, #example2_paginate, #example3_paginate, #example4_paginate, #example5_paginate, #example6_paginate, #example7_paginate{
+	margin-bottom: 60px;
+}
+
+/** SPINNER CREATION **/
+
+.loader {
+  position: relative;
+  text-align: center;
+  margin: 15px auto 35px auto;
+  z-index: 9999;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(0, 0, 0, .3);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+
+/** MODAL STYLING **/
+
+.modal-content {
+  border-radius: 0px;
+  box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+}
+
+.modal-backdrop.show {
+  opacity: 0.75;
+}
+
+.loader-txt {
+  p {
+    font-size: 13px;
+    color: #666;
+    small {
+      font-size: 11.5px;
+      color: #999;
+    }
+  }
+}

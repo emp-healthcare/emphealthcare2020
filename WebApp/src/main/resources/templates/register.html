@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Inscription</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="../../plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="../../dist/css/ionicons.min.css">
+<!-- icheck bootstrap -->
+<link rel="stylesheet"
+	href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+<link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="dist/css/perso.css">
+</head>
+<body class="hold-transition register-page"
+	style="background-image: url('../../dist/img/background.png'); background-repeat: no-repeat; background-size: cover;">
+	<div class="register-box">
+		<div class="login-logo">
+			<img src="../../dist/img/logo_emp.png" alt="EMP Logo"
+				class=" elevation-2" style="width: 100%">
+		</div>
+
+		<div class="card elevation-3">
+			<div class="card-body register-card-body">
+				<p class="login-box-msg">Enregistrer un nouveau membre du
+					personnel</p>
+
+				<form action="../../index.html" method="post">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Nom(s)"
+							required>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Prénom(s)">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<select class="custom-select" required>
+							<option value="" disabled selected>---Genre---</option>
+							<option>Homme</option>
+							<option>Femme</option>
+							<option>Autre</option>
+						</select>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="js-date form-control" maxlength="10"
+							placeholder="Date de naissance" required />
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="far fa-calendar-alt"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Adresse"
+							required>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-address-card"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control"
+							placeholder="Numéro de téléphone 1" required>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-phone"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control"
+							placeholder="Numéro de téléphone 2">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-phone"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<select class="custom-select" required>
+							<option value="" disabled selected>---Métier---</option>
+							<option>Médecin</option>
+							<option>Dentiste</option>
+							<option>Infirmi(er/ère)</option>
+							<option>Laborant(in/ine)</option>
+						</select>
+					</div>
+					<div class="input-group mb-3">
+						<select class="custom-select" required>
+							<option value="" disabled selected>---Organisation---</option>
+						</select>
+					</div>
+					<div class="input-group mb-3">
+						<input type="email" class="form-control" placeholder="Email"
+							required>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-envelope"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control"
+							placeholder="Mot de passe" required>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control"
+							placeholder="Retapez le mot de passe" required>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input"
+								id="exampleInputFile" placeholder="Photo de profil"
+								accept="image/*"> <label class="custom-file-label"
+								for="exampleInputFile">Photo de profil</label>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<!-- /.col -->
+						<div class="col-12">
+							<button type="submit" class="btn btn-success btn-block">Inscription</button>
+						</div>
+						<!-- /.col -->
+					</div>
+				</form>
+				<p class="mb-0 mt-3">
+					<a th:href="@{/login/form}" class="text-center ">J'ai déjà un
+						compte</a>
+				</p>
+			</div>
+			<!-- /.card -->
+		</div>
+		<!-- /.register-box -->
+	</div>
+	<!-- jQuery -->
+	<script src="../../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../../dist/js/adminlte.min.js"></script>
+	<!-- Select2 -->
+	<script src="../../plugins/select2/js/select2.full.min.js"></script>
+
+	<script>
+var input = document.querySelectorAll('.js-date')[0];
+
+var dateInputMask = function dateInputMask(elm) {
+  elm.addEventListener('keypress', function(e) {
+    if(e.keyCode < 47 || e.keyCode > 57) {
+      e.preventDefault();
+    }
+    
+    var len = elm.value.length;
+    
+    // If we're at a particular place, let the user type the slash
+    // i.e., 12/12/1212
+    if(len !== 1 || len !== 3) {
+      if(e.keyCode == 47) {
+        e.preventDefault();
+      }
+    }
+    
+    // If they don't add the slash, do it for them...
+    if(len === 2) {
+      elm.value += '/';
+    }
+
+    // If they don't add the slash, do it for them...
+    if(len === 5) {
+      elm.value += '/';
+    }
+  });
+};
+  
+dateInputMask(input);
+</script>
+
+</body>
+</html>

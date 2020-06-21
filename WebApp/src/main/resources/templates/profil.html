@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-
+extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Profil</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- IonIcons -->
+<link rel="stylesheet" href="../../dist/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+<link rel="stylesheet" href="../../dist/css/perso.css">
+</head>
+<body class="hold-transition sidebar-mini ">
+	<div class="wrapper">
+		<div th:replace="fragments/navbar"></div>
+
+		<!-- Sidebar -->
+		<div class="sidebar">
+
+
+
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="image" th:if="${userPhoto == null}">
+					<img src="../../dist/img/userspp/user_128px.png"
+						class="img-circle elevation-1" alt="User Image">
+				</div>
+				<div class="info">
+					<a th:href="@{/profil}" class="d-block"
+						th:text="${userVrai.prenom}"></a>
+				</div>
+			</div>
+
+
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column"
+					data-widget="treeview" role="menu" data-accordion="false">
+					<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+					<li class="nav-item"><a th:href="@{/}" class="nav-link ">
+							<i class="fas fa-home nav-icon"></i>
+							<p>Accueil</p>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/patients}"
+						class="nav-link"> <i class="nav-icon fas fa-user-md"></i>
+							<p>Mes patients</p> <span class="badge badge-success right"
+							th:text="${nombrePatient}"></span>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/rendezvous}"
+						class="nav-link"> <i class="nav-icon fas fa-calendar"></i>
+							<p>Mes rendez-vous</p> <span class="badge badge-warning right"
+							th:text="${demandesDeRendezvous}"></span>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/inbox}" class="nav-link ">
+							<i class="nav-icon far fa-envelope"></i>
+							<p>Boîte de réception</p> <span class="badge badge-danger right">0</span>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/teleconsultation}"
+						class="nav-link "> <i class="nav-icon fas fa-video"></i>
+							<p>Téléconsultation</p>
+					</a></li>
+					<li class="nav-item"><a th:href="@{/ajout}" class="nav-link">
+							<i class="nav-icon fas fa-user-plus"></i>
+							<p>Ajouter un patient</p>
+					</a></li>
+
+					<li class="nav-item"><a th:href="@{/stats}" class="nav-link">
+							<i class="nav-icon fas fa-users"></i>
+							<p>Mes collègues</p>
+					</a></li>
+
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Profil</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a th:href="@{/}">Accueil</a></li>
+								<li class="breadcrumb-item active">Profil</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card card-widget widget-user">
+								<!-- Add the bg color to the header using any of the bg-* classes -->
+								<div class="widget-user-header bg-success">
+									<h3 class="widget-user-username"
+										th:text="${userVrai.nom + ' ' + userVrai.prenom}"></h3>
+									<h5 class="widget-user-desc"
+										th:text="${praticien.metier.metier}"></h5>
+								</div>
+								<div class="widget-user-image" th:if="${userPhoto == null}">
+									<img class="img-circle elevation-2"
+										src="../../dist/img/userspp/user_128px.png" alt="User Avatar">
+								</div>
+								<div class="card-footer">
+									<div class="row">
+										<div class="col-sm-4 border-right">
+											<div class="description-block">
+												<h5 class="description-header"
+													th:text="${userVrai.username}">3,200</h5>
+												<span class="description-text">EMAIL</span>
+											</div>
+											<!-- /.description-block -->
+										</div>
+										<!-- /.col -->
+										<div class="col-sm-4 border-right">
+											<div class="description-block">
+												<h5 class="description-header" th:text="${nombrePatient}">13,000</h5>
+												<span class="description-text">Patients</span>
+											</div>
+											<!-- /.description-block -->
+										</div>
+										<!-- /.col -->
+										<div class="col-sm-4">
+											<div class="description-block">
+												<h5 class="description-header"
+													th:text="${praticien.metier.metier}">35</h5>
+												<span class="description-text">METIER</span>
+											</div>
+											<!-- /.description-block -->
+										</div>
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<div class="card">
+												<div class="card-body">
+
+													<form class="form-horizontal" th:object="${userVrai}">
+														<div class="form-group row">
+															<label for="inputName" class="col-sm-3 col-form-label">Nom(s)</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputName"
+																	th:field="*{nom}" required readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputPrenom" class="col-sm-3 col-form-label">Prénom(s)</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputPrenom"
+																	th:field="*{prenom}" required readonly="readonly">
+															</div>
+														</div>
+
+														<div class="form-group row">
+															<label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+															<div class="col-sm-9">
+																<input type="email" class="form-control" id="inputEmail"
+																	th:field="*{username}" readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputMetier" class="col-sm-3 col-form-label">Métier</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputMetier"
+																	th:field="${praticien.metier.metier}"
+																	readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputDN" class="col-sm-3 col-form-label">Date
+																de naissance</label>
+															<div class="col-sm-9">
+																<input type="text"
+																	class="form-control js-date form-control"
+																	maxlength="10" id="inputDN" th:field="*{dateNaissance}"
+																	required readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputGenre" class="col-sm-3 col-form-label">Genre</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputGenre"
+																	th:field="*{genre}" readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputSM" class="col-sm-3 col-form-label">Statut
+																matrimonial</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputSM"
+																	th:field="*{statutMatrimonial}" required
+																	readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputNT" class="col-sm-3 col-form-label">Numéro
+																de téléphone</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputNT"
+																	th:field="*{numeroTelephone}" required
+																	readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputAdresse" class="col-sm-3 col-form-label">Adresse</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputNT"
+																	th:field="*{adresse.adresse}" required
+																	readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputVille" class="col-sm-3 col-form-label">Ville</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputVille"
+																	th:field="*{adresse.ville}" required
+																	readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputRegion" class="col-sm-3 col-form-label">Région</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputRegion"
+																	th:field="*{adresse.region}" required
+																	readonly="readonly">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputBP" class="col-sm-3 col-form-label">Boîte
+																Postale</label>
+															<div class="col-sm-9">
+																<input type="text" class="form-control" id="inputBP"
+																	th:field="*{adresse.BP}" required readonly="readonly">
+															</div>
+														</div>
+
+
+
+													</form>
+
+
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.nav-tabs-custom -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<strong>Copyright &copy; 2019-2020 <a
+				href="http://www.emp.mdn.dz/">Ecole Militaire Polytechnique -
+					Chahid Abderrahmane Taleb</a>.
+			</strong> Tous droits réservés.
+			<div class="float-right d-none d-sm-inline-block">
+				<b>Version</b> 1.0.0-pre
+			</div>
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="dist/js/adminlte.js"></script>
+
+	<!-- DataTables -->
+	<script src="../../plugins/datatables/jquery.dataTables.js"></script>
+	<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				"language" : {
+					"lengthMenu" : "Nombre d'entrées _MENU_",
+					"search" : "Recherche",
+					"info" : "Affichage de _START_ à _END_ de _TOTAL_ entrées",
+					"infoEmpty" : "Affichage de 0 à 0 à 0 entrées",
+					"paginate": {
+				        "first":      "Début",
+				        "last":       "Fin",
+				        "next":       "Suivant",
+				        "previous":   "Précédent"
+				    },
+				    "zeroRecords":    "Aucun résultat trouvé",
+				    "emptyTable":     "Cette table ne contient aucune entrée",
+				},
+				responsive: true,
+				"lengthChange": false
+			});
+		});
+		
+	</script>
+	<script>
+var input = document.querySelectorAll('.js-date')[0];
+
+var dateInputMask = function dateInputMask(elm) {
+  elm.addEventListener('keypress', function(e) {
+    if(e.keyCode < 47 || e.keyCode > 57) {
+      e.preventDefault();
+    }
+    
+    var len = elm.value.length;
+    
+    // If we're at a particular place, let the user type the slash
+    // i.e., 12/12/1212
+    if(len !== 1 || len !== 3) {
+      if(e.keyCode == 47) {
+        e.preventDefault();
+      }
+    }
+    
+    // If they don't add the slash, do it for them...
+    if(len === 4) {
+      elm.value += '-';
+    }
+
+    // If they don't add the slash, do it for them...
+    if(len === 7) {
+      elm.value += '-';
+    }
+  });
+};
+  
+dateInputMask(input);
+</script>
+</body>
+</html>

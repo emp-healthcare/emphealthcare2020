@@ -1,0 +1,6 @@
+Temp
+1
+Temperature
+Bluetooth
+btspp://FCA89A001BBF:1;authenticate=false;encrypt=false;master=false
+capteur.temperature.2@emp.dz
